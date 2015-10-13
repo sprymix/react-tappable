@@ -193,7 +193,14 @@ var Mixin = {
 		}
 	},
 
-	endTouch: function (event, callback) {
+	endTouch: function(event, callback) {
+		var self = this;
+		setTimeout(function() {
+			self._endTouch(event, callback);
+		}, 50);
+	},
+
+	_endTouch: function (event, callback) {
 		this.cancelPressDetection();
 		this.clearActiveTimeout();
 		if (event && this.props.onTouchEnd) {
